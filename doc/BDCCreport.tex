@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+
+% Packages
+
+% for floating graphics w/ captions
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+% links
+\usepackage{hyperref}
+
+% for math stuffs
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% for math notes
+\usepackage[show]{ed}
+
+% for citing
+% \usepackage{biblatex}
+% \addbibresource{ARPReport.bib}
+
+\title{Establishing and Evaluating Access to Scientific Data \\ EUDAT Human Brain Project \\ Big Databases and Cloud Services \\ Project Report}
+\author{Tom Wiesing}
+\date{\today}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\begin{document}
+	
+	% Title Page
+	\maketitle
+	
+	\ednote{Make an abstract}
+
+	\newpage
+	
+	% Table of content
+	\tableofcontents
+	
+	
+	\vspace{\fill}\noindent	
+	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-nd/4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
+	\newpage
+	
+	% Section 1
+	\section{Introduction}
+	\input{parts/01_intro.tex}
+		
+	% Section 2
+	\section{The EUDAT Human Brain Project}
+	\input{parts/02_eudat.tex}
+	
+	% Section 3
+	\section{Human Brain Scans: The Dataset}
+	\input{parts/03_dataset.tex}
+	
+	% Section 4
+	\section{Data Ingestion}
+	\input{parts/04_ingestion.tex}
+	
+	% Section 5
+	\section{Querying the Dataset}
+	\input{parts/05_queries.tex}
+		
+	% Section 6
+	\section{Outlook \& Conclusion}
+	\input{parts/06_conclusion.tex}
+	
+	% \printbibliography
+\end{document}
