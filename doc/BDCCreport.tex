@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass{article}
 
 % Packages
 
@@ -17,12 +17,19 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-% for math notes
+% for ednotes
 \usepackage[show]{ed}
 
+% Other stuff
+\usepackage{paralist}
+
+% Unicode
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{00A0}{ }
+
 % for citing
-% \usepackage{biblatex}
-% \addbibresource{ARPReport.bib}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{BDCCReport.bib}
 
 \title{Establishing and Evaluating Access to Scientific Data \\ EUDAT Human Brain Project \\ Big Databases and Cloud Services \\ Project Report}
 \author{Tom Wiesing}
@@ -69,26 +76,22 @@
 	% Section 1
 	\section{Introduction}
 	\input{parts/01_intro.tex}
-		
+	
 	% Section 2
-	\section{The EUDAT Human Brain Project}
-	\input{parts/02_eudat.tex}
+	\section{Human Brain Scans: The Dataset}
+	\input{parts/02_dataset.tex}
 	
 	% Section 3
-	\section{Human Brain Scans: The Dataset}
-	\input{parts/03_dataset.tex}
+	\section{Data Ingestion}
+	\input{parts/03_ingestion.tex}
 	
 	% Section 4
-	\section{Data Ingestion}
-	\input{parts/04_ingestion.tex}
-	
-	% Section 5
 	\section{Querying the Dataset}
-	\input{parts/05_queries.tex}
+	\input{parts/04_queries.tex}
 		
-	% Section 6
+	% Section 5
 	\section{Outlook \& Conclusion}
-	\input{parts/06_conclusion.tex}
+	\input{parts/05_conclusion.tex}
 	
-	% \printbibliography
+	\printbibliography
 \end{document}
