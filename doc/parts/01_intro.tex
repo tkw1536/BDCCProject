@@ -2,28 +2,28 @@
 
 \subsection{Overview}
 
-Multi-dimensional arrays arise naturally in multiple occasions and thus the paradigm of Array Databases has become more and more important. They can be used for a variety of scientific applications, ranging from satellite imagery, over medical imaging techniques to mathematically interesting objects. 
+Multi-dimensional arrays arise naturally in multiple occasions and thus the paradigm of Array Databases has become more and more important. They can be used for a variety of scientific applications, ranging from satellite imagery, over medical imaging techniques to mathematically interesting objects.
 
-One such array database is the Rasdaman system \cite{rasdaman:intropaper}. It promises to allow users to ``storing and querying massive multi-dimensional arrays, such as sensor, image, simulation, and statistics data appearing in domains like earth, space, and life science'' \cite{rasdaman:website}. 
+One such array database is the Rasdaman system \cite{rasdaman:intropaper}. It promises to allow users to ``storing and querying massive multi-dimensional arrays, such as sensor, image, simulation, and statistics data appearing in domains like earth, space, and life science'' \cite{rasdaman:website}.
 
-In this project we want to establish and evaluate access to scientific data. In particular we want to insert this scientific data into the Rasdaman database and evaluate how well the database can handle this kind of data. In this case we want to work together with EUDAT and the Human Brain Project. 
+In this project we want to establish and evaluate access to scientific data. In particular we want to insert this scientific data into the Rasdaman database and evaluate how well the database can handle this kind of data. In this case we want to work together with EUDAT and the Human Brain Project.
 
 \subsection{Collaborators}
 
-The Human Brain Project \cite{hbp:website} is a European Commission Future and Emerging Technologies Flagship Project with the aim of ``providing research infrastructure in the fields of Neuroscience, computing and brain-related medicine''. In particular we collaborated with Huanxiang Lu and Dr. Sean Hill from the École polytechnique fédérale de Lausanne to gain access to the Human Brain Database. This archive of multiple sources is a database of (not only) human brain scans. 
+The Human Brain Project \cite{hbp:website} is a European Commission Future and Emerging Technologies Flagship Project with the aim of ``providing research infrastructure in the fields of Neuroscience, computing and brain-related medicine''. In particular we collaborated with Huanxiang Lu and Dr. Sean Hill from the École polytechnique fédérale de Lausanne to gain access to the Human Brain Database. This archive of multiple sources is a database of (not only) human brain scans.
 
-We also collaborated with Peter Wittenburg and Daan Broede from EUDAT \cite{eudat:website}. EUDAT is a ``collaborative Pan-European infrastructure for research data services, training and consultancy'' and will be used to host the data and resulting interfaces created in this project. 
+We also collaborated with Peter Wittenburg and Daan Broede from EUDAT \cite{eudat:website}. EUDAT is a ``collaborative Pan-European infrastructure for research data services, training and consultancy'' and will be used to host the data and resulting interfaces created in this project.
 
 \subsection{Project Components}
 
 Concretly this project consists of
 \begin{inparaenum}[(1)]
-\item gaining access to the scientific data provided by the Human Brain Database, 
-\item determining how (and if) this data can be represented inside the Rasdaman system, 
-\item developing a method to properly ingest the data into Rasdaman, 
-\item asking the collaborators about useful queries that can be performed on the data, 
+\item gaining access to the scientific data provided by the Human Brain Database,
+\item determining how (and if) this data can be represented inside the Rasdaman system,
+\item developing a method to properly ingest the data into Rasdaman,
+\item asking the collaborators about useful queries that can be performed on the data,
 \item running the queries and gaining new insight into the data and finally
-\item evaluating how well Rasdaman was able to deal with the provided data and developed queries. 
+\item evaluating how well Rasdaman was able to deal with the provided data and developed queries.
 \end{inparaenum}
 
-The section of this report is as follows: In Section~\ref{sec:dataset} we introduce in detail the provided dataset. We then continue in Section~\ref{sec:ingestion} by describing how we ingested the data into Rasdaman. Next we describe the queries that we developed over the course of this project in Section~\ref{sec:queries} before concluding with an evaluation and outlook for future work in Section~\ref{sec:outlook_conclusion}. 
+The section of this report is as follows: In Section~\ref{sec:dataset} we introduce in detail the provided dataset. We then continue in Section~\ref{sec:ingestion} by describing how we ingested the data into Rasdaman. Next we describe the queries that we developed over the course of this project in Section~\ref{sec:queries} before coming to a short conclusion in Section~\ref{sec:outlook_conclusion}. 

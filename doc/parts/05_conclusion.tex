@@ -1,38 +1,7 @@
 \label{sec:outlook_conclusion}
 
-\ednote{Write this}
+In this project we have collaborated with Human Brain Database researchers. We have looked at their data and modelled this inside Rasdaman. We have written a script to automatically ingest more data in the future. We also investigated which queries are of use and implemented a few basic queries inside our database.
 
-% \begin{figure}[h]
-% \centering
-% \begin{subfigure}{.4\textwidth}
-%   \centering
-%   \includegraphics[width=\textwidth]{imgs/cepheid}
-%   \caption{Cepheid Stars are known to flash occasionally. Such a flash is an example of an oscilation. }
-% \end{subfigure}%
-% \space\space\space
-% \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=\textwidth]{imgs/oscillation}
-%   \caption{An pendulum swinging to the left and right and a spring oscilating up and down. }
-% \end{subfigure}
-% \caption{Some examples of oscilating objects}
-% \label{fig:intro_samples}
-% \end{figure}
+The research in this direction is far from complete however. With the work we have achieved we have provided a base line for reproducing the functionality of the ATLAS viewer and future projects should be able to build on this. Even though the provided queries allow users to investigate the data set as is, an interface should be implemented on top of this so that users without database knowledge can also interact with the dataset.
 
-% \begin{lstlisting}
-% # create a new graph
-% G = nx.DiGraph()
-% 
-% # read current parameters
-% A = self.A
-% N = self.N
-% 
-% # add all the edges
-% for i in range(N):
-% 		for j in range(N):
-% 				if A[i, j] != 0:
-% 						G.add_edge(i, j, weight=A[i,j])
-% 
-% # and return the graph
-% return G
-% \end{lstlisting}
+Furthermore the methods described in this report have only been tested with a small fraction of the dataset and most of it has yet to be ingested. A further direction worth researching might also include generating the brain region masks provided automatically. Such a project would likely involve a Machine Learning component.
