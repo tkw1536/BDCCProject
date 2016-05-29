@@ -11,7 +11,7 @@
 \usepackage{color}
 
 % links
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 % for math stuffs
 \usepackage{amsmath}
@@ -57,44 +57,47 @@
 }
 
 \begin{document}
-	
+
 	% Title Page
 	\maketitle
-	
+
 	\ednote{Make an abstract}
 
 	\newpage
-	
+
 	% Table of content
 	\tableofcontents
-	
-	
-	\vspace{\fill}\noindent	
-	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-nd/4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
+
+
+	\vspace{\fill}\noindent
+	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-nd/4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 	\newpage
-	
+
 	% Section 1
 	\section{Introduction}
 	\input{parts/01_intro.tex}
 	\newpage
-	
+
 	% Section 2
 	\section{The Dataset}
 	\input{parts/02_dataset.tex}
 	\newpage
-	
+
 	% Section 3
 	\section{Data Ingestion}
 	\input{parts/03_ingestion.tex}
 	\newpage
-	
+
 	% Section 4
 	\section{Querying the Dataset}
 	\input{parts/04_queries.tex}
-		
+	\newpage
+
 	% Section 5
 	\section{Outlook \& Conclusion}
 	\input{parts/05_conclusion.tex}
-	
+	\newpage
+
+	% Bibliography
 	\printbibliography
 \end{document}

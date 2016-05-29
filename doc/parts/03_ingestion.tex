@@ -1,18 +1,18 @@
 \label{sec:ingestion}
 
-\subsection{The NIfTI format}
+\subsection{The NIfTI Format}
 
-After viewing the image viewer it turned out that the HDF / BBIC encoded data is not the original data the brain scans were generated from. It was generated from files in NIfTI format. 
+After viewing the image viewer it turned out that the HDF / BBIC encoded data is not the original data the brain scans were generated from. It was generated from files in NIfTI format.
 
-NIfTI \cite{NIfTI:website}, or Neuroimaging Informatics Technology Initiative, is a format created by a group of the same name. It is very commonly used for Neuroimages. As suggested by the name it is commonly used as the format of neuro images. Each file contains a single multi-dimensional array of homogeneous type as well as domain specific meta-data. 
+NIfTI \cite{NIfTI:website}, or Neuroimaging Informatics Technology Initiative, is a format created by a group of the same name. It is very commonly used for Neuroimages. As suggested by the name it is commonly used as the format of neuro images. Each file contains a single multi-dimensional array of homogeneous type as well as domain specific meta-data.
 
-This format is a huge improvement on the BBIC format because it gives us direct access to the data we want to ingest into Rasdaman. In our case this gave us direct access to a three-dimensional array of floats. This allowed us to ingest the data in a collection of type \lstinline{FloatSet3} \footnote{Rasdaman organises the multi-dimensional arrays it stores in so-called collections. Each collection corresponds to a list of multi-dimensional arrays of the same type. The type \lstinline{FloatSet3} corresponds to a collection of three-dimensional arrays with floating point values. }. 
+This format is a huge improvement on the BBIC format because it gives us direct access to the data we want to ingest into Rasdaman. In our case this gave us direct access to a three-dimensional array of floats. This allowed us to ingest the data in a collection of type \lstinline{FloatSet3} \footnote{Rasdaman organises the multi-dimensional arrays it stores in so-called collections. Each collection corresponds to a list of multi-dimensional arrays of the same type. The type \lstinline{FloatSet3} corresponds to a collection of three-dimensional arrays with floating point values. }.
 
-Rasdaman does not support this format natively. Hence in order to ingest the data we need to find a way to access the data format and then convert it into a format that Rasdaman can understand. 
+Rasdaman does not support this format natively. Hence in order to ingest the data we need to find a way to access the data format and then convert it into a format that Rasdaman can understand.
 
-\subsection{Reading Data from Python}
+\subsection{Reading Data From Python}
 
-In order to access the data we used Python. A convenient library for acessing neuroimaging data called Nibabel is available from \cite{Nibabel:website}. It provides interoperatbility with the Numpy / SciPy stack and is thus perfeclty suited for our purposes. This allowed us to read in and access an image file via the following code: 
+In order to access the data we used Python. A convenient library for acessing neuroimaging data called Nibabel is available from \cite{Nibabel:website}. It provides interoperatbility with the Numpy / SciPy stack and is thus perfeclty suited for our purposes. This allowed us to read in and access an image file via the following code:
 \begin{lstlisting}
 >>> import nibabel as nb # Load the NiBabel Library
 >>> import numpy as np # Load the Numpy Library
@@ -25,17 +25,17 @@ dtype('float64')
 (151, 188, 154)
 \end{lstlisting}
 
-\subsection{Suitable Data formats for Rasdaman}
+\subsection{Suitable Data Formats For Rasdaman}
 
-In terms of formats that Rasdaman supports that can be used to read in the data, two different formats come to mind, CSV and TIFF. 
+In terms of formats that Rasdaman supports that can be used to read in the data, two different formats come to mind, CSV and TIFF.
 
-CSV, or comma seperated values, is a format that encodes up to two-dimensional data inside an ASCII file. For this it turns the data values into strings and joins them with commas. In the case of two-dimensional data, each line represents a single row of the dataset. This is a very wasteful encoding and unfortunatly not well suited for our data because it is three-dimensional. While Rasdaman supports three-dimensional CSV, it is non-standard and would thus proved to be too difficult to use. 
+CSV, or comma seperated values, is a format that encodes up to two-dimensional data inside an ASCII file. For this it turns the data values into strings and joins them with commas. In the case of two-dimensional data, each line represents a single row of the dataset. This is a very wasteful encoding and unfortunatly not well suited for our data because it is three-dimensional. While Rasdaman supports three-dimensional CSV, it is non-standard and would thus proved to be too difficult to use.
 
-TIFF, or Tagged Image File Format, is a lossless image raster format that was originally created by Aldus Corporation and is now maintained by Adobe \cite{tiff:website}. TIFF in theory supports both two and three-dimensional images however Rasdaman only supports the former. Furthermore it is possible to write to TIFF files from python using a library called \lstinline{tifffile.py} available at \cite{tifffile:website}. 
+TIFF, or Tagged Image File Format, is a lossless image raster format that was originally created by Aldus Corporation and is now maintained by Adobe \cite{tiff:website}. TIFF in theory supports both two and three-dimensional images however Rasdaman only supports the former. Furthermore it is possible to write to TIFF files from python using a library called \lstinline{tifffile.py} available at \cite{tifffile:website}.
 
-\subsection{From Python to Rasdaman}
+\subsection{From Python To Rasdaman}
 
-In order to work around the fact that Rasdaman supports only two-dimensional TIFF files, we decided to import the data using so-called partial updates. This involves slicing the three-dimensional array into two-dimensional TIFF files which can then be imported on by one into Rasdaman. Using the \textit{rasql} tool to insert data into Rasdaman this involves three steps. 
+In order to work around the fact that Rasdaman supports only two-dimensional TIFF files, we decided to import the data using so-called partial updates. This involves slicing the three-dimensional array into two-dimensional TIFF files which can then be imported on by one into Rasdaman. Using the \textit{rasql} tool to insert data into Rasdaman this involves three steps.
 
 \begin{lstlisting}[showstringspaces=false,morekeywords={NAME},language=Bash]
 # Step 1: Create a collection of type FloatSet3 inside Rasdaman
@@ -48,19 +48,19 @@ rasql -q "insert into NAME values marray it in [0:0,0:0,0:0] values 0f"
 rasql -q "update NAME as c set c[INDEX,*:*,*:*] assign inv_tiff(\$1)" --file FILENAME.tiff
 \end{lstlisting}
 
-In the first step we create a collection of type \lstinline{FloatSet3} inside Rasdaman. For this we need to give it a name (we just used a placeholder) and the collection type. 
-In the second step we create an empty two-dimensional array inside the collection. 
-In the third step (which we need to repeat for each slice) we update a single slice of the data cube with data read from a tiff file. 
+In the first step we create a collection of type \lstinline{FloatSet3} inside Rasdaman. For this we need to give it a name (we just used a placeholder) and the collection type.
+In the second step we create an empty two-dimensional array inside the collection.
+In the third step (which we need to repeat for each slice) we update a single slice of the data cube with data read from a tiff file.
 
 \subsection{Automating Ingest}
 
 Since we usually have several hundered slices we do not want to do this manually. Thus we have written a python script that combines this process into a single step. The script consists of about 200 lines of python code and is well documented. It is called \lstinline{nii_to_tiff.py} and concretly performs the following steps: 
 
 \begin{enumerate}
-  \item Reads a NIfTI file, 
-  \item splits it into different slices and store each one as a TIFF file, 
-  \item output a bash script to STDOUT which calls \lstinline{rasql} with the arguments mentioned above to import the slices and 
-  \item delete the TIFF files since they are no longer needed. 
+  \item Reads a NIfTI file,
+  \item splits it into different slices and store each one as a TIFF file,
+  \item output a bash script to STDOUT which calls \lstinline{rasql} with the arguments mentioned above to import the slices and
+  \item delete the TIFF files since they are no longer needed.
 \end{enumerate}
 
 In order to import a single file we can then use the command
